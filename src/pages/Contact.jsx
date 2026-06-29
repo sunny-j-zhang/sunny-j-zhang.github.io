@@ -85,7 +85,7 @@ export default function Contact() {
           display: 'flex', flexDirection: 'column', gap: '0.85rem'
         }}>
           {[
-            { label: 'email', value: 'sunnyzhang403@email.com', href: 'mailto:sunnyzhang403@email.com' },
+            { label: 'email', value: 'sunnyzhang403@email.com', href: 'mailto:sunnyzhang403@outlook.com' },
             { label: 'github', value: 'github.com/sunny-j-zhang', href: 'https://github.com/sunny-j-zhang' },
             { label: 'linkedin', value: 'linkedin.com/in/sunny-j-zhang', href: 'https://linkedin.com/in/sunny-j-zhang' },
             { label: 'location', value: 'Toronto, ON', href: null },
