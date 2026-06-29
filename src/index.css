@@ -1,0 +1,268 @@
+/* ── Solarpunk token system ── */
+:root {
+  --forest-deep:    #0D1F0F;
+  --forest-mid:     #1C3B1E;
+  --forest-light:   #2A5530;
+  --moss:           #4A7C59;
+  --canopy:         #7EC98F;
+  --parchment:      #E8DFC8;
+  --parchment-dim:  #B8AF98;
+  --copper:         #C47A3A;
+  --copper-light:   #E09A5A;
+  --bark:           #3D2B1A;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --max-w: 820px;
+  --vine-w: 40px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--forest-deep);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--moss);
+  color: var(--parchment);
+}
+
+a {
+  color: var(--canopy);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--copper-light); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--canopy);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--forest-deep); }
+::-webkit-scrollbar-thumb { background: var(--moss); border-radius: 3px; }
+
+/* ── Page layout ── */
+.page-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.vine-rail {
+  width: var(--vine-w);
+  flex-shrink: 0;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.page-content {
+  margin-left: var(--vine-w);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Nav ── */
+nav.top-nav {
+  position: fixed;
+  top: 0; left: var(--vine-w); right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+nav.top-nav.scrolled {
+  background: rgba(13, 31, 15, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(74, 124, 89, 0.2);
+}
+
+.nav-wordmark {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--canopy);
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--canopy);
+  transition: width 0.25s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--canopy);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* ── Section wrapper ── */
+.section {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5rem 2.5rem;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 1rem;
+}
+
+/* ── Divider ── */
+.leaf-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  color: var(--moss);
+  font-size: 1.1rem;
+  opacity: 0.5;
+}
+.leaf-divider::before,
+.leaf-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--moss));
+}
+.leaf-divider::before { background: linear-gradient(to left, transparent, var(--moss)); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.4rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+.btn-primary {
+  background: var(--moss);
+  color: var(--parchment);
+}
+.btn-primary:hover {
+  background: var(--canopy);
+  color: var(--forest-deep);
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--moss);
+  color: var(--canopy);
+}
+.btn-outline:hover {
+  border-color: var(--canopy);
+  background: rgba(126, 201, 143, 0.08);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--forest-mid);
+  border: 1px solid rgba(74, 124, 89, 0.25);
+  border-radius: 4px;
+  padding: 1.75rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover {
+  border-color: rgba(126, 201, 143, 0.45);
+  transform: translateY(-2px);
+}
+
+/* ── Tags ── */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  background: rgba(74, 124, 89, 0.2);
+  color: var(--canopy);
+  border: 1px solid rgba(74, 124, 89, 0.3);
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid rgba(74, 124, 89, 0.15);
+  padding: 2rem 2.5rem;
+  margin-left: var(--vine-w);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--moss);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease both; }
+.fade-up-2 { animation: fadeUp 0.6s 0.15s ease both; }
+.fade-up-3 { animation: fadeUp 0.6s 0.3s ease both; }
+.fade-up-4 { animation: fadeUp 0.6s 0.45s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-up-2, .fade-up-3, .fade-up-4 { animation: none; }
+}
+
+@media (max-width: 600px) {
+  :root { --vine-w: 20px; }
+  .section { padding: 4rem 1.25rem; }
+  nav.top-nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1.2rem; }
+}
