@@ -12,17 +12,6 @@ const projects = [
     tags: ['C++', 'Yocto', 'PREEMPT_RT', 'SolidWorks', 'STM32', 'Cycloidal', 'Robotics'],
     link: '/projects/arm',
   },
-  {
-    id: 'tors',
-    title: 'Trans-oral Robotic Surgery',
-    period: '2025 -',
-    status: 'live',
-    statusColor: '#7EC98F',
-    description:
-      'Working with the SickKids Hospital in Toronto developing millimeter scale robotic surgery tools for trans-oral procedures. Involved in mechanical design and control of various systems, published in ISMR2025, ICRA 2026.',
-    tags: ['Solidworks', 'C++', 'Python', 'Robotic Simulation', 'Unity'],
-    link: '#',
-  },
 ]
 
 function StatusDot({ color }) {

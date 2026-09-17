@@ -16,6 +16,7 @@ export default function Nav() {
       <ul className="nav-links">
         <li><NavLink to="/" end>Home</NavLink></li>
         <li><NavLink to="/projects">Projects</NavLink></li>
+        <li><NavLink to="/experience">Experience</NavLink></li>
         <li><NavLink to="/contact">Contact</NavLink></li>
       </ul>
     </nav>

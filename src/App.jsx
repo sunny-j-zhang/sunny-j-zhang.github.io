@@ -8,6 +8,8 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import ArmProject from './pages/ArmProject'
+import Experience from './pages/Experience'
+
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -29,6 +31,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/arm" element={<ArmProject />} />
+            <Route path="/experience" element={<Experience />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
